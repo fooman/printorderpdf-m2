@@ -1,0 +1,25 @@
+{
+    "name": "fooman/printorderpdf",
+    "description": "Print the order as a pdf from the admin",
+    "require": {
+        "magento/module-sales": "*",
+        "magento/module-backend": "*",
+        "magento/magento-composer-installer": "*"
+    },
+    "type": "magento2-module",
+    "license": "OSL-3.0",
+    "autoload": {
+        "psr-4": {
+            "Fooman\\": "app/code/Fooman/"
+        }
+    },
+    "extra": {
+        "map": [
+            [
+                "app/code/Fooman/PrintOrderPdf/*",
+                "Fooman/PrintOrderPdf"
+            ]
+        ]
+    }
+
+}
