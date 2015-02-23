@@ -12,40 +12,8 @@ namespace Fooman\PrintOrderPdf\Controller\Adminhtml\Order;
 use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\App\Filesystem\DirectoryList;
 
-class PrintAction extends \Magento\Backend\App\Action
+class PrintAction extends \Fooman\PrintOrderPdf\Controller\Adminhtml\Order\AbstractOrder\Pdf
 {
-    /**
-     * @var \Magento\Framework\App\Response\Http\FileFactory
-     */
-    protected $_fileFactory;
-
-    /**
-     * @var \Magento\Backend\Model\View\Result\ForwardFactory
-     */
-    protected $_resultForwardFactory;
-
-    /**
-     * @param \Magento\Backend\App\Action\Context $context
-     * @param \Magento\Framework\App\Response\Http\FileFactory $fileFactory
-     * @param \Magento\Backend\Model\View\Result\ForwardFactory $resultForwardFactory
-     */
-    public function __construct(
-        \Magento\Backend\App\Action\Context $context,
-        \Magento\Framework\App\Response\Http\FileFactory $fileFactory,
-        \Magento\Backend\Model\View\Result\ForwardFactory $resultForwardFactory
-    ) {
-        $this->_fileFactory = $fileFactory;
-        parent::__construct($context);
-        $this->_resultForwardFactory = $resultForwardFactory;
-    }
-
-    /**
-     * @return bool
-     */
-    protected function _isAllowed()
-    {
-        return $this->_authorization->isAllowed('Magento_Sales::sales_order');
-    }
 
     /**
      * @return ResponseInterface|void
