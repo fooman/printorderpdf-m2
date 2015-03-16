@@ -17,7 +17,7 @@ class Order extends Invoice
     /**
      * Return PDF document
      *
-     * @param  array $orders
+     * @param  \Magento\Sales\Model\Order $orders
      *
      * @return \Zend_Pdf
      */
