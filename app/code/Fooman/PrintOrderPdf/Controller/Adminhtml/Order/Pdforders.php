@@ -22,14 +22,14 @@ class Pdforders extends \Fooman\PrintOrderPdf\Controller\Adminhtml\Order\Abstrac
     {
         $orderIds = $this->getRequest()->getPost('order_ids');
         if (!empty($orderIds)) {
-            $invoices = $this->_objectManager->create('Magento\Sales\Model\Resource\Order\Collection')
+            $orders = $this->_objectManager->create('Magento\Sales\Model\Resource\Order\Collection')
                 ->addAttributeToSelect('*')
                 ->addAttributeToFilter('entity_id', ['in' => $orderIds])
                 ->load();
             if (!isset($pdf)) {
-                $pdf = $this->_objectManager->create('Fooman\PrintOrderPdf\Model\Pdf\Order')->getPdf($invoices);
+                $pdf = $this->_objectManager->create('Fooman\PrintOrderPdf\Model\Pdf\Order')->getPdf($orders);
             } else {
-                $pages = $this->_objectManager->create('Fooman\PrintOrderPdf\Model\Pdf\Order')->getPdf($invoices);
+                $pages = $this->_objectManager->create('Fooman\PrintOrderPdf\Model\Pdf\Order')->getPdf($orders);
                 $pdf->pages = array_merge($pdf->pages, $pages->pages);
             }
             $date = $this->_objectManager->get('Magento\Framework\Stdlib\DateTime\DateTime')->date('Y-m-d_H-i-s');
