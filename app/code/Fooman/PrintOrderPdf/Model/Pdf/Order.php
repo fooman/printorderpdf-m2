@@ -48,7 +48,7 @@ class Order extends Invoice
                 $order,
                 $this->_scopeConfig->isSetFlag(
                     self::XML_PATH_SALES_PDF_INVOICE_PUT_ORDER_ID,
-                    \Magento\Framework\Store\ScopeInterface::SCOPE_STORE,
+                    \Magento\Store\Model\ScopeInterface::SCOPE_STORE,
                     $order->getStoreId()
                 )
             );
