@@ -12,8 +12,16 @@ namespace Fooman\PrintOrderPdf\Block\Adminhtml;
 /**
  * @magentoAppArea adminhtml
  */
-class PrintOrderButtonTest extends \Magento\Backend\Utility\Controller
+class PrintOrderButtonTest extends \Magento\TestFramework\TestCase\AbstractBackendController
 {
+
+    public function setUp()
+    {
+        $this->resource = 'Magento_Sales::sales_order';
+        $this->uri = 'backend/fooman_printorderpdf/order/pdforders';
+        parent::setUp();
+    }
+
     /**
      * @magentoDataFixture Magento/Sales/_files/order.php
      */
@@ -25,5 +33,11 @@ class PrintOrderButtonTest extends \Magento\Backend\Utility\Controller
         $this->assertTrue($orderId>0);
         $this->dispatch('backend/sales/order/view/order_id/'.$orderId);
         $this->assertContains('<button id="fooman_print" title="Print"', $this->getResponse()->getBody());
+    }
+
+    public function testPrintOrdersMassaction()
+    {
+        $this->dispatch('backend/sales/order');
+        $this->assertContains('"type":"fooman_pdforders","label":"Print Orders"', $this->getResponse()->getBody());
     }
 }
