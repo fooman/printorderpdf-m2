@@ -1,25 +1,29 @@
 {
-    "name": "fooman/printorderpdf",
-    "description": "Print the order as a pdf from the admin",
-    "require": {
-        "magento/module-sales": "*",
-        "magento/module-backend": "*",
-        "magento/magento-composer-installer": "*"
+  "name": "fooman/printorderpdf",
+  "description": "Print the order as a pdf from the admin",
+  "require": {
+    "magento/magento-composer-installer": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.5",
+    "magento/community-edition": "dev-master"
+  },
+  "type": "magento2-module",
+  "license": "OSL-3.0",
+  "autoload": {
+    "psr-0": {
+      "Magento\\": "vendor/magento/community-edition/app/code/"
     },
-    "type": "magento2-module",
-    "license": "OSL-3.0",
-    "autoload": {
-        "psr-4": {
-            "Fooman\\": "app/code/Fooman/"
-        }
-    },
-    "extra": {
-        "map": [
-            [
-                "app/code/Fooman/PrintOrderPdf/*",
-                "Fooman/PrintOrderPdf"
-            ]
-        ]
+    "psr-4": {
+      "Fooman\\": "app/code/Fooman/"
     }
-
+  },
+  "extra": {
+    "map": [
+      [
+        "app/code/Fooman/PrintOrderPdf/*",
+        "Fooman/PrintOrderPdf"
+      ]
+    ]
+  }
 }
