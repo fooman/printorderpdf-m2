@@ -12,8 +12,43 @@ namespace Fooman\PrintOrderPdf\Controller\Adminhtml\Order;
 use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\App\Filesystem\DirectoryList;
 
-class PrintAction extends \Fooman\PrintOrderPdf\Controller\Adminhtml\Order\AbstractOrder\Pdf
+class PrintAction extends \Magento\Backend\App\Action
 {
+
+
+    /**
+     * @var \Magento\Framework\App\Response\Http\FileFactory
+     */
+    protected $_fileFactory;
+
+    /**
+     * @var \Magento\Backend\Model\View\Result\RedirectFactory
+     */
+    protected $_resultRedirectFactory;
+
+    /**
+     * @param \Magento\Backend\App\Action\Context $context
+     * @param \Magento\Framework\App\Response\Http\FileFactory $fileFactory
+     * @param \Magento\Backend\Model\View\Result\RedirectFactory $resultRedirectFactory
+     */
+    public function __construct(
+        \Magento\Backend\App\Action\Context $context,
+        \Magento\Framework\App\Response\Http\FileFactory $fileFactory,
+        \Magento\Backend\Model\View\Result\RedirectFactory $resultRedirectFactory
+    ) {
+        $this->_fileFactory = $fileFactory;
+        parent::__construct($context);
+        $this->_resultRedirectFactory = $resultRedirectFactory;
+    }
+
+    /**
+     * @return bool
+     */
+    protected function _isAllowed()
+    {
+        return $this->_authorization->isAllowed('Magento_Sales::sales_order');
+    }
+
 
     /**
      * @return ResponseInterface|void
@@ -34,7 +69,7 @@ class PrintAction extends \Fooman\PrintOrderPdf\Controller\Adminhtml\Order\Abstr
                 );
             }
         } else {
-            return $this->_resultForwardFactory->create()->forward('noroute');
+            return $this->_resultRedirectFactory->create()->setPath('sales/*/view');
         }
     }
 }
