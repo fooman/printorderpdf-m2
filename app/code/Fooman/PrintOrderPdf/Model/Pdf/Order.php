@@ -21,7 +21,7 @@ class Order extends Invoice
      *
      * @return \Zend_Pdf
      */
-    public function getPdf($orders = [])
+    public function getPdf(\Magento\Sales\Model\Order $orders = [])
     {
         $this->_beforeGetPdf();
         $this->_initRenderer('order');

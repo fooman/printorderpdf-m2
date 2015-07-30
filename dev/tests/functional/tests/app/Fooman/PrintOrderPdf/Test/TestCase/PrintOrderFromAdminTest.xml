@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../vendor/magento/mtf/etc/variations.xsd">
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../../../vendor/magento/mtf/etc/variations.xsd">
     <testCase name="Fooman\PrintOrderPdf\Test\TestCase\PrintOrderFromAdminTest">
         <variation name="PrintOrderFromAdminTestVariation1">
             <data name="description" xsi:type="string">print from single order view</data>
-            <constraint name="Fooman\PrintOrderPdf\Test\Constraint\AssertResponseIsPdf" />
+            <constraint name="Fooman\PrintOrderPdf\Test\Constraint\AssertResponseIsPdf"/>
         </variation>
     </testCase>
 </config>

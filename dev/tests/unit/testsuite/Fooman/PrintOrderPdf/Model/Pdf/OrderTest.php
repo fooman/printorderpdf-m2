@@ -104,24 +104,21 @@ class OrderTest extends \PHPUnit_Framework_TestCase
         );
 
 
+        $orderConstructorArgs = [
+            'paymentData'       => $paymentDataMock,
+            'string'            => $objectManager->getObject('Magento\Framework\Stdlib\String'),
+            'scopeConfig'       => $scopeConfigMock,
+            'filesystem'        => $filesystemMock,
+            'pdfConfig'         => $pdfConfigMock,
+            'pdfTotalFactory'   => $pdfTotalFactoryMock,
+            'pdfItemsFactory'   => $pdfItemsFactoryMock,
+            'localeDate'        => $localeDataMock,
+            'inlineTranslation' => $inlineTranslationMock,
+            'storeManager'      => $storeManagerMock,
 
-        $orderConstructorArgs =
-            [
-                'paymentData' => $paymentDataMock,
-                'string'=>$objectManager->getObject('Magento\Framework\Stdlib\String'),
-                'scopeConfig'=>$scopeConfigMock,
-                'filesystem'=>$filesystemMock,
-                'pdfConfig' => $pdfConfigMock,
-                'pdfTotalFactory'=>$pdfTotalFactoryMock,
-                'pdfItemsFactory'=>$pdfItemsFactoryMock,
-                'localeDate'=>$localeDataMock,
-                'inlineTranslation'=>$inlineTranslationMock,
-                'storeManager'=>$storeManagerMock,
-
-                'localeResolver'=>$localeResolverMock,
-                $data = []
-            ]
-        ;
+            'localeResolver'    => $localeResolverMock,
+            $data = []
+        ];
 
         $this->_object = $objectManager->getObject('Fooman\PrintOrderPdf\Model\Pdf\Order', $orderConstructorArgs);
 
@@ -132,7 +129,7 @@ class OrderTest extends \PHPUnit_Framework_TestCase
         $orderMock = $this->getMock(
             'Magento\Sales\Model\Order',
             ['getBillingAddress', 'getShippingAddress', 'getStore', 'getCreatedAtStoreDate', 'getPayment',
-             'getOrderCurrency', 'getAllItems','getStoreId'],
+             'getOrderCurrency', 'getAllItems', 'getStoreId'],
             [],
             '',
             false
@@ -168,7 +165,9 @@ class OrderTest extends \PHPUnit_Framework_TestCase
             )
         );
 
-        $orderMock->expects($this->any())->method('getAllItems')->will($this->returnValue([$orderParentItemMock, $orderItemMock]));
+        $orderMock->expects($this->any())->method('getAllItems')->will(
+            $this->returnValue([$orderParentItemMock, $orderItemMock])
+        );
 
 
         $addressMock = $this->getMock(
