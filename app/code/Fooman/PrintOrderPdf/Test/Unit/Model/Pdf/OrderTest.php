@@ -1,7 +1,7 @@
 <?php
-namespace Fooman\PrintOrderPdf\Model\Pdf;
+namespace Fooman\PrintOrderPdf\Test\Unit\Model\Pdf;
 
-use Magento\TestFramework\Helper\ObjectManager;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 
 class OrderTest extends \PHPUnit_Framework_TestCase
 {
@@ -51,7 +51,7 @@ class OrderTest extends \PHPUnit_Framework_TestCase
             ->disableOriginalConstructor()
             ->getMock();
         $storeMock->expects($this->any())->method('getBaseUrl')->will($this->returnValue('/'));
-        $storeManagerMock = $this->getMockForAbstractClass('Magento\Framework\Store\StoreManagerInterface');
+        $storeManagerMock = $this->getMockForAbstractClass('Magento\Store\Model\StoreManagerInterface');
         $storeManagerMock->expects($this->any())->method('getStore')->will($this->returnValue($storeMock));
 
 

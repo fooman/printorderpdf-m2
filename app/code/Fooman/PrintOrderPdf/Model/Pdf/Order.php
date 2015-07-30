@@ -17,11 +17,11 @@ class Order extends Invoice
     /**
      * Return PDF document
      *
-     * @param  \Magento\Sales\Model\Order $orders
+     * @param  \Magento\Sales\Model\Order[] $orders
      *
      * @return \Zend_Pdf
      */
-    public function getPdf(\Magento\Sales\Model\Order $orders = [])
+    public function getPdf($orders = [])
     {
         $this->_beforeGetPdf();
         $this->_initRenderer('order');
