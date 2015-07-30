@@ -60,8 +60,8 @@ class PrintOrderFromAdminTest extends Injectable
         // Steps
         $this->orderIndex->open();
         $this->orderIndex->getSalesOrderGrid()->searchAndOpen(['id' => $order->getId()]);
-        $this->salesOrderView->getPrintActions()->printAction();
 
+        return ['url'=>$this->salesOrderView->getPrintActions()->printUrl()];
     }
 
     /**
