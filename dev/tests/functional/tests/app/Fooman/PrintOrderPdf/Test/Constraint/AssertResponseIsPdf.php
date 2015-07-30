@@ -37,7 +37,7 @@ class AssertResponseIsPdf extends \Magento\Mtf\Constraint\AbstractConstraint
         \PHPUnit_Framework_Assert::assertEquals(
             $pdfMarkerExpected,
             $pdfMarkerActual,
-            'Response is not a pdf.'
+            'Pdf is not the expected version'
         );
     }
 
