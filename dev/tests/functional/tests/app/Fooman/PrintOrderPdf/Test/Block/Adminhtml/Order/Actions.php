@@ -22,6 +22,11 @@ class Actions extends \Magento\Sales\Test\Block\Adminhtml\Order\Actions
         $this->_rootElement->find($this->print)->click();
     }
 
+    /**
+     * extract print url from onclick param
+     *
+     * @return string
+     */
     public function printUrl()
     {
         $onclick = $this->_rootElement->find($this->print)->getAttribute('onclick');

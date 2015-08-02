@@ -11,6 +11,15 @@ namespace Fooman\PrintOrderPdf\Test\TestCase;
 class PrintOrderFromAdminTest extends Common
 {
 
+    /**
+     * Steps:
+     *
+     * 1. Create Order
+     * 2. Find Order in Grid and open
+     * 3. Print Order
+     *
+     * @return array
+     */
     public function testPrint()
     {
         // Preconditions

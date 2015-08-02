@@ -49,7 +49,7 @@ class Common extends Injectable
     }
 
     /**
-     * Create order.
+     * Create single test order.
      *
      * @return array
      */
@@ -63,6 +63,13 @@ class Common extends Injectable
 
     }
 
+    /**
+     * create specified number of test orders
+     *
+     * @param $nrOrders
+     *
+     * @return array
+     */
     protected function createOrders($nrOrders)
     {
         $orders = [];

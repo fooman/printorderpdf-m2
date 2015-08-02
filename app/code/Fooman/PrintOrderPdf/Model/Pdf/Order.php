@@ -28,8 +28,6 @@ class Order extends Invoice
 
         $pdf = new \Zend_Pdf();
         $this->_setPdf($pdf);
-        $style = new \Zend_Pdf_Style();
-        $this->_setFontBold($style, 10);
 
         foreach ($orders as $order) {
             if ($order->getStoreId()) {
@@ -37,6 +35,7 @@ class Order extends Invoice
                 $this->_storeManager->setCurrentStore($order->getStoreId());
             }
             $page = $this->newPage();
+            $this->_setFontBold($page, 10);
             $order->setOrder($order);
             /* Add image */
             $this->insertLogo($page, $order->getStore());

@@ -7,7 +7,7 @@ use Magento\Mtf\Util\Protocol\CurlTransport;
 use Magento\Mtf\Util\Protocol\CurlTransport\BackendDecorator;
 use Magento\Sales\Test\Fixture\OrderInjectable;
 
-class AssertResponseIsMultiplePdfs extends \Magento\Mtf\Constraint\AbstractConstraint
+class AssertResponseIsMultiplePdfs extends AbstractAssertPdf
 {
 
     /**
@@ -52,34 +52,10 @@ class AssertResponseIsMultiplePdfs extends \Magento\Mtf\Constraint\AbstractConst
     }
 
     /**
-     * @return string
+     * @param $orders
+     *
+     * @return array
      */
-    public function toString()
-    {
-        return 'Response is a pdf';
-    }
-
-    protected function getHeaderValue($fullHeader, $key)
-    {
-
-        if (function_exists('http_parse_headers')) {
-            $headerParsed = http_parse_headers($fullHeader);
-            if (isset($headerParsed[$key])) {
-                return $headerParsed[$key];
-            }
-        } else {
-            //for our purposes we don't need to deal with multi line headers or status
-            foreach (explode("\n", $fullHeader) as $headerLine) {
-                if (strpos($headerLine, ":") !== false) {
-                    list($header, $value) = explode(':', $headerLine, 2);
-                    if (trim($header) == $key) {
-                        return trim($value);
-                    }
-                }
-            }
-        }
-    }
-
     protected function convertIdsToSelected($orders)
     {
         $data = [];

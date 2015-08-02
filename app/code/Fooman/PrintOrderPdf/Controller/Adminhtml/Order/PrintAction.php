@@ -67,8 +67,7 @@ class PrintAction extends \Magento\Backend\App\Action
                     'application/pdf'
                 );
             }
-        } else {
-            return $this->_resultRedirectFactory->create()->setPath('sales/*/view');
         }
+        return $this->_resultRedirectFactory->create()->setPath('sales/*/view');
     }
 }

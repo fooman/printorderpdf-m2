@@ -3,9 +3,15 @@ namespace Fooman\PrintOrderPdf\Test\Unit\Model\Pdf;
 
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 
+/**
+ * Test for
+ * @see Fooman\PrintOrderPdf\Model\Pdf\Order
+ */
 class OrderTest extends \PHPUnit_Framework_TestCase
 {
-    /** @var  Order */
+    /**
+     * @var \Fooman\PrintOrderPdf\Model\Pdf\Order
+     */
     protected $_object;
 
     public function setUp()
@@ -54,12 +60,10 @@ class OrderTest extends \PHPUnit_Framework_TestCase
         $storeManagerMock = $this->getMockForAbstractClass('Magento\Store\Model\StoreManagerInterface');
         $storeManagerMock->expects($this->any())->method('getStore')->will($this->returnValue($storeMock));
 
-
         $scopeConfigMock = $this->getMock('Magento\Framework\App\Config\ScopeConfigInterface');
         $localeDataMock = $this->getMock('Magento\Framework\Stdlib\DateTime\TimezoneInterface');
         $inlineTranslationMock = $this->getMock('Magento\Framework\Translate\Inline\StateInterface');
         $localeResolverMock = $this->getMock('Magento\Framework\Locale\ResolverInterface');
-
 
         $paymentDataMock = $this->getMock(
             'Magento\Payment\Helper\Data',
@@ -115,9 +119,8 @@ class OrderTest extends \PHPUnit_Framework_TestCase
             'localeDate'        => $localeDataMock,
             'inlineTranslation' => $inlineTranslationMock,
             'storeManager'      => $storeManagerMock,
-
             'localeResolver'    => $localeResolverMock,
-            $data = []
+            []
         ];
 
         $this->_object = $objectManager->getObject('Fooman\PrintOrderPdf\Model\Pdf\Order', $orderConstructorArgs);

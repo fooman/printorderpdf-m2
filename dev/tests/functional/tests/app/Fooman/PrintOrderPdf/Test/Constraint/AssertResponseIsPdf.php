@@ -6,10 +6,17 @@ use Magento\Mtf\Util\Protocol\CurlInterface;
 use Magento\Mtf\Util\Protocol\CurlTransport;
 use Magento\Mtf\Util\Protocol\CurlTransport\BackendDecorator;
 
-class AssertResponseIsPdf extends \Magento\Mtf\Constraint\AbstractConstraint
+class AssertResponseIsPdf extends AbstractAssertPdf
 {
 
-
+    /**
+     * @param \Magento\Mtf\Config\DataInterface $config
+     * @param CurlTransport                     $transport
+     * @param string                            $url
+     * @param string                            $pdfMarkerExpected
+     *
+     * @throws \Exception
+     */
     public function processAssert(
         \Magento\Mtf\Config\DataInterface $config,
         \Magento\Mtf\Util\Protocol\CurlTransport $transport,
@@ -39,35 +46,6 @@ class AssertResponseIsPdf extends \Magento\Mtf\Constraint\AbstractConstraint
             $pdfMarkerActual,
             'Pdf is not the expected version'
         );
-    }
-
-    /**
-     * @return string
-     */
-    public function toString()
-    {
-        return 'Response is a pdf';
-    }
-
-    protected function getHeaderValue($fullHeader, $key)
-    {
-
-        if (function_exists('http_parse_headers')) {
-            $headerParsed = http_parse_headers($fullHeader);
-            if (isset($headerParsed[$key])) {
-                return $headerParsed[$key];
-            }
-        } else {
-            //for our purposes we don't need to deal with multi line headers or status
-            foreach (explode("\n", $fullHeader) as $headerLine) {
-                if (strpos($headerLine, ":") !== false) {
-                    list($header, $value) = explode(':', $headerLine, 2);
-                    if (trim($header) == $key) {
-                        return trim($value);
-                    }
-                }
-            }
-        }
     }
 
 }

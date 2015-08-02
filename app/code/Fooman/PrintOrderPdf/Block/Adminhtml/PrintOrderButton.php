@@ -18,6 +18,11 @@ class PrintOrderButton extends \Magento\Backend\Block\Widget\Container
      */
     protected $_coreRegistry = null;
 
+    /**
+     * @param \Magento\Backend\Block\Widget\Context $context
+     * @param \Magento\Framework\Registry           $registry
+     * @param array                                 $data
+     */
     public function __construct(
         \Magento\Backend\Block\Widget\Context $context,
         \Magento\Framework\Registry $registry,
