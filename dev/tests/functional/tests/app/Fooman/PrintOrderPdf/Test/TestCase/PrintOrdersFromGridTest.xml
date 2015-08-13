@@ -2,7 +2,7 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="../../../../../../vendor/magento/mtf/etc/variations.xsd">
     <testCase name="Fooman\PrintOrderPdf\Test\TestCase\PrintOrdersFromGridTest" summary="Print Orders" ticketId="UC02-FOO">
-        <variation name="PrintOrdersFromGridTestVariation1">
+        <variation name="PrintOrdersFromGridTestVariation1" ticketId="102">
             <data name="description" xsi:type="string">print multiple orders from order grid</data>
             <data name="nrOrders" xsi:type="string">2</data>
             <constraint name="Fooman\PrintOrderPdf\Test\Constraint\AssertResponseIsMultiplePdfs"/>
