@@ -110,7 +110,7 @@ class OrderTest extends \PHPUnit_Framework_TestCase
 
         $orderConstructorArgs = [
             'paymentData'       => $paymentDataMock,
-            'string'            => $objectManager->getObject('Magento\Framework\Stdlib\String'),
+            'string'            => $objectManager->getObject('Magento\Framework\Stdlib\StringUtils'),
             'scopeConfig'       => $scopeConfigMock,
             'filesystem'        => $filesystemMock,
             'pdfConfig'         => $pdfConfigMock,

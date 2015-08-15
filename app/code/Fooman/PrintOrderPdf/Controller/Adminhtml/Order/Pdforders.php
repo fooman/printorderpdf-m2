@@ -29,17 +29,19 @@ class Pdforders extends \Magento\Sales\Controller\Adminhtml\Order\AbstractMassAc
 
     /**
      * @param \Magento\Backend\App\Action\Context                $context
+     * @param \Magento\Ui\Component\MassAction\Filter            $filter
      * @param \Magento\Framework\App\Response\Http\FileFactory   $fileFactory
      * @param \Magento\Backend\Model\View\Result\RedirectFactory $resultRedirectFactory
      */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
+        \Magento\Ui\Component\MassAction\Filter $filter,
         \Magento\Framework\App\Response\Http\FileFactory $fileFactory,
         \Magento\Backend\Model\View\Result\RedirectFactory $resultRedirectFactory
     ) {
         $this->_fileFactory = $fileFactory;
-        parent::__construct($context);
         $this->_resultRedirectFactory = $resultRedirectFactory;
+        parent::__construct($context, $filter);
     }
 
     /**
