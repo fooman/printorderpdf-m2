@@ -56,12 +56,20 @@ class AssertResponseIsMultiplePdfs extends AbstractAssertPdf
      *
      * @return array
      */
-    protected function convertIdsToSelected($orders)
+    protected function  convertIdsToSelected($orders)
     {
         $data = [];
+        $i = 0;
         foreach ($orders as $order) {
-            $data['selected'][] = $order->getId();
+            //getEntityId returns an array with products
+            //getId returns the increment id
+            //fortunately the increment id converts to the real id easily
+            $data['selected'][$i++] = (int)$order->getId();
         }
+        $data['search'] = '';
+        $data['namespace'] = 'sales_order_grid';
+        $data['filters']['placeholder'] = 'true';
+
         return $data;
     }
 
