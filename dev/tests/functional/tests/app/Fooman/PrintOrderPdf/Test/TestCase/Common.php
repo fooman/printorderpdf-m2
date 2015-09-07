@@ -10,10 +10,6 @@ use Magento\Mtf\TestCase\Injectable;
 
 class Common extends Injectable
 {
-    /* tags */
-    const MVP = 'yes';
-    const FOOMAN = 'yes';
-    /* end tags */
 
     /**
      * Order index page.
