@@ -11,5 +11,5 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/Module/etc/module.xsd">
-    <module name="Fooman_PrintOrderPdf" setup_version="1.0.1"/>
+    <module name="Fooman_PrintOrderPdf" setup_version="1.0.2"/>
 </config>
