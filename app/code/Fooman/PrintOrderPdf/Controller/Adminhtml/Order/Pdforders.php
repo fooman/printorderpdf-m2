@@ -10,7 +10,7 @@
 namespace Fooman\PrintOrderPdf\Controller\Adminhtml\Order;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Framework\Model\Resource\Db\Collection\AbstractCollection;
+use Magento\Framework\Model\ModelResource\Db\Collection\AbstractCollection;
 
 class Pdforders extends \Magento\Sales\Controller\Adminhtml\Order\AbstractMassAction
 {
@@ -28,16 +28,16 @@ class Pdforders extends \Magento\Sales\Controller\Adminhtml\Order\AbstractMassAc
     protected $_resultRedirectFactory;
 
     /**
-     * @param \Magento\Backend\App\Action\Context                   $context
-     * @param \Magento\Ui\Component\MassAction\Filter               $filter
-     * @param \Magento\Sales\Model\Resource\Order\CollectionFactory $collectionFactory
-     * @param \Magento\Framework\App\Response\Http\FileFactory      $fileFactory
-     * @param \Magento\Backend\Model\View\Result\RedirectFactory    $resultRedirectFactory
+     * @param \Magento\Backend\App\Action\Context                        $context
+     * @param \Magento\Ui\Component\MassAction\Filter                    $filter
+     * @param \Magento\Sales\Model\ResourceModel\Order\CollectionFactory $collectionFactory
+     * @param \Magento\Framework\App\Response\Http\FileFactory           $fileFactory
+     * @param \Magento\Backend\Model\View\Result\RedirectFactory         $resultRedirectFactory
      */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
         \Magento\Ui\Component\MassAction\Filter $filter,
-        \Magento\Sales\Model\Resource\Order\CollectionFactory $collectionFactory,
+        \Magento\Sales\Model\ResourceModel\Order\CollectionFactory $collectionFactory,
         \Magento\Framework\App\Response\Http\FileFactory $fileFactory,
         \Magento\Backend\Model\View\Result\RedirectFactory $resultRedirectFactory
     ) {
