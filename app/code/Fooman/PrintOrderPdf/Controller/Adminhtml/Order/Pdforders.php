@@ -10,7 +10,7 @@
 namespace Fooman\PrintOrderPdf\Controller\Adminhtml\Order;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Framework\Model\ModelResource\Db\Collection\AbstractCollection;
+use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 
 class Pdforders extends \Magento\Sales\Controller\Adminhtml\Order\AbstractMassAction
 {
