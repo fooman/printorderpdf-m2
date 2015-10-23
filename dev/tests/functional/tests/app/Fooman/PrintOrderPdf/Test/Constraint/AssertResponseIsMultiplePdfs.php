@@ -28,7 +28,7 @@ class AssertResponseIsMultiplePdfs extends AbstractAssertPdf
 
         $curl = new BackendDecorator($transport, $config);
         $curl->addOption(CURLOPT_HEADER, 1);
-        $curl->write(CurlInterface::POST, $url, '1.0', [], $this->convertIdsToSelected($orders));
+        $curl->write($url, $this->convertIdsToSelected($orders), CurlInterface::POST);
         $response = $curl->read();
 
         $headerSize = $transport->getInfo(CURLINFO_HEADER_SIZE);

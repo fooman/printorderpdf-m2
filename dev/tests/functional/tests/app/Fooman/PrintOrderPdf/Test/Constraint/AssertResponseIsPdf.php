@@ -25,7 +25,7 @@ class AssertResponseIsPdf extends AbstractAssertPdf
     ) {
         $curl = new BackendDecorator($transport, $config);
         $curl->addOption(CURLOPT_HEADER, 1);
-        $curl->write(CurlInterface::GET, $url, '1.0');
+        $curl->write($url, [], CurlInterface::GET);
         $response = $curl->read();
 
         $headerSize = $transport->getInfo(CURLINFO_HEADER_SIZE);
