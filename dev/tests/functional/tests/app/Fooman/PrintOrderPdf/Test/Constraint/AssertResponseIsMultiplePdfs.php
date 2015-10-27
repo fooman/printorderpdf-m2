@@ -56,7 +56,7 @@ class AssertResponseIsMultiplePdfs extends AbstractAssertPdf
      *
      * @return array
      */
-    protected function  convertIdsToSelected($orders)
+    protected function convertIdsToSelected($orders)
     {
         $data = [];
         $i = 0;

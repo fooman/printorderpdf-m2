@@ -18,39 +18,9 @@ class OrderTest extends \PHPUnit_Framework_TestCase
     {
         $objectManager = new ObjectManager($this);
 
-        $pdfConfigMock = $this->getMock(
-            'Magento\Sales\Model\Order\Pdf\Config', ['getRenderersPerProduct', 'getTotals'], [], '', false
-        );
-        $pdfConfigMock->expects($this->any())->method('getRenderersPerProduct')->will(
-            $this->returnValue(
-                [
-                    'default' => '>\Magento\Sales\Model\Order\Pdf\Items\Invoice\DefaultInvoice'
-                ]
-            )
-        );
-
-        $pdfConfigMock->expects($this->any())->method('getTotals')->will(
-            $this->returnValue(['grand_total' => ['source_field' => 'grand_total']])
-        );
-
-        $directoryMock = $this->getMock(
-            'Magento\Framework\Filesystem\Directory\Write',
-            [],
-            [],
-            '',
-            false,
-            false
-        );
-        $directoryMock->expects($this->any())->method('getAbsolutePath')->will(
-            $this->returnCallback(
-                function ($argument) {
-                    return BP . '/' . $argument;
-                }
-            )
-        );
-        $filesystemMock = $this->getMock('Magento\Framework\Filesystem', [], [], '', false, false);
-        $filesystemMock->expects($this->any())->method('getDirectoryRead')->will($this->returnValue($directoryMock));
-        $filesystemMock->expects($this->any())->method('getDirectoryWrite')->will($this->returnValue($directoryMock));
+        $pdfConfigMock = $this->getPdfConfigMock();
+        $directoryMock = $this->getDirectoryMock();
+        $filesystemMock = $this->getFileSystemMock($directoryMock);
 
 
         $storeMock = $this->getMockBuilder('Magento\Store\Model\Store')
@@ -65,24 +35,7 @@ class OrderTest extends \PHPUnit_Framework_TestCase
         $inlineTranslationMock = $this->getMock('Magento\Framework\Translate\Inline\StateInterface');
         $localeResolverMock = $this->getMock('Magento\Framework\Locale\ResolverInterface');
 
-        $paymentDataMock = $this->getMock(
-            'Magento\Payment\Helper\Data',
-            ['getInfoBlock'],
-            [],
-            '',
-            false
-        );
-
-        $blockMock = $this->getMock(
-            'Magento\Framework\View\Element\Template',
-            ['toPdf'],
-            [],
-            '',
-            false
-        );
-        $blockMock->expects($this->any())->method('toPdf')->will($this->returnValue('PAYMENT INFO'));
-
-        $paymentDataMock->expects($this->any())->method('getInfoBlock')->will($this->returnValue($blockMock));
+        $paymentDataMock = $this->getPaymentDataMock();
 
         $pdfTotalFactoryMock = $this->getMock(
             'Magento\Sales\Model\Order\Pdf\Total\Factory',
@@ -220,5 +173,89 @@ class OrderTest extends \PHPUnit_Framework_TestCase
 
         $pdf = $this->_object->getPdf(array($orderMock));
         $this->assertInstanceOf('Zend_Pdf', $pdf);
+    }
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject
+     */
+    protected function getPdfConfigMock()
+    {
+        $pdfConfigMock = $this->getMock(
+            'Magento\Sales\Model\Order\Pdf\Config',
+            ['getRenderersPerProduct', 'getTotals'],
+            [],
+            '',
+            false
+        );
+        $pdfConfigMock->expects($this->any())->method('getRenderersPerProduct')->will(
+            $this->returnValue(['default' => '>\Magento\Sales\Model\Order\Pdf\Items\Invoice\DefaultInvoice'])
+        );
+
+        $pdfConfigMock->expects($this->any())->method('getTotals')->will(
+            $this->returnValue(['grand_total' => ['source_field' => 'grand_total']])
+        );
+        return $pdfConfigMock;
+    }
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject
+     */
+    protected function getDirectoryMock()
+    {
+        $directoryMock = $this->getMock(
+            'Magento\Framework\Filesystem\Directory\Write',
+            [],
+            [],
+            '',
+            false,
+            false
+        );
+        $directoryMock->expects($this->any())->method('getAbsolutePath')->will(
+            $this->returnCallback(
+                function ($argument) {
+                    return BP . '/' . $argument;
+                }
+            )
+        );
+        return $directoryMock;
+    }
+
+    /**
+     * @param $directoryMock
+     *
+     * @return \PHPUnit_Framework_MockObject_MockObject
+     */
+    protected function getFileSystemMock($directoryMock)
+    {
+        $filesystemMock = $this->getMock('Magento\Framework\Filesystem', [], [], '', false, false);
+        $filesystemMock->expects($this->any())->method('getDirectoryRead')->will($this->returnValue($directoryMock));
+        $filesystemMock->expects($this->any())->method('getDirectoryWrite')->will($this->returnValue($directoryMock));
+        return $filesystemMock;
+    }
+
+    /**
+     * @return \PHPUnit_Framework_MockObject_MockObject
+     */
+    protected function getPaymentDataMock()
+    {
+        $paymentDataMock = $this->getMock(
+            'Magento\Payment\Helper\Data',
+            ['getInfoBlock'],
+            [],
+            '',
+            false
+        );
+
+        $blockMock = $this->getMock(
+            'Magento\Framework\View\Element\Template',
+            ['toPdf'],
+            [],
+            '',
+            false
+        );
+        $blockMock->expects($this->any())->method('toPdf')->will($this->returnValue('PAYMENT INFO'));
+
+        $paymentDataMock->expects($this->any())->method('getInfoBlock')->will($this->returnValue($blockMock));
+        return $paymentDataMock;
     }
 }
