@@ -16,7 +16,7 @@ class PrintOrderButton extends \Magento\Backend\Block\Widget\Container
      *
      * @var \Magento\Framework\Registry
      */
-    protected $_coreRegistry = null;
+    protected $coreRegistry = null;
 
     /**
      * @param \Magento\Backend\Block\Widget\Context $context
@@ -29,7 +29,7 @@ class PrintOrderButton extends \Magento\Backend\Block\Widget\Container
         array $data = []
     ) {
 
-        $this->_coreRegistry = $registry;
+        $this->coreRegistry = $registry;
         parent::__construct($context, $data);
     }
 
@@ -60,6 +60,6 @@ class PrintOrderButton extends \Magento\Backend\Block\Widget\Container
      */
     public function getOrderId()
     {
-        return $this->_coreRegistry->registry('sales_order')->getId();
+        return $this->coreRegistry->registry('sales_order')->getId();
     }
 }
