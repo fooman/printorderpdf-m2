@@ -20,12 +20,17 @@ class Pdforders extends \Magento\Sales\Controller\Adminhtml\Order\AbstractMassAc
     /**
      * @var \Magento\Framework\App\Response\Http\FileFactory
      */
-    protected $_fileFactory;
+    protected $fileFactory;
 
     /**
      * @var \Magento\Backend\Model\View\Result\RedirectFactory
      */
-    protected $_resultRedirectFactory;
+    protected $resultRedirectFactory;
+
+    /**
+     * @var \Magento\Framework\Stdlib\DateTime\DateTime
+     */
+    protected $date;
 
     /**
      * @param \Magento\Backend\App\Action\Context                        $context
@@ -39,11 +44,15 @@ class Pdforders extends \Magento\Sales\Controller\Adminhtml\Order\AbstractMassAc
         \Magento\Ui\Component\MassAction\Filter $filter,
         \Magento\Sales\Model\ResourceModel\Order\CollectionFactory $collectionFactory,
         \Magento\Framework\App\Response\Http\FileFactory $fileFactory,
-        \Magento\Backend\Model\View\Result\RedirectFactory $resultRedirectFactory
+        \Magento\Backend\Model\View\Result\RedirectFactory $resultRedirectFactory,
+        \Fooman\PrintOrderPdf\Model\Pdf\OrderFactory $orderPdfFactory,
+        \Magento\Framework\Stdlib\DateTime\DateTime $date
     ) {
         $this->collectionFactory = $collectionFactory;
-        $this->_fileFactory = $fileFactory;
-        $this->_resultRedirectFactory = $resultRedirectFactory;
+        $this->fileFactory = $fileFactory;
+        $this->resultRedirectFactory = $resultRedirectFactory;
+        $this->orderPdfFactory = $orderPdfFactory;
+        $this->date = $date;
         parent::__construct($context, $filter);
     }
 
@@ -66,14 +75,14 @@ class Pdforders extends \Magento\Sales\Controller\Adminhtml\Order\AbstractMassAc
     {
 
         if (!isset($pdf)) {
-            $pdf = $this->_objectManager->create('Fooman\PrintOrderPdf\Model\Pdf\Order')->getPdf($collection);
+            $pdf = $this->orderPdfFactory->create()->getPdf($collection);
         } else {
-            $pages = $this->_objectManager->create('Fooman\PrintOrderPdf\Model\Pdf\Order')->getPdf($collection);
+            $pages = $this->orderPdfFactory->create()->getPdf($collection);
             $pdf->pages = array_merge($pdf->pages, $pages->pages);
         }
-        $date = $this->_objectManager->get('Magento\Framework\Stdlib\DateTime\DateTime')->date('Y-m-d_H-i-s');
+        $date = $this->date->date('Y-m-d_H-i-s');
 
-        return $this->_fileFactory->create(
+        return $this->fileFactory->create(
             'orders' . $date . '.pdf',
             $pdf->render(),
             DirectoryList::VAR_DIR,

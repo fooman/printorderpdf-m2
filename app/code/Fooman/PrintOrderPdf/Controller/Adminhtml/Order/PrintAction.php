@@ -14,30 +14,52 @@ use Magento\Framework\App\Filesystem\DirectoryList;
 class PrintAction extends \Magento\Backend\App\Action
 {
 
-
     /**
      * @var \Magento\Framework\App\Response\Http\FileFactory
      */
-    protected $_fileFactory;
+    protected $fileFactory;
 
     /**
      * @var \Magento\Backend\Model\View\Result\RedirectFactory
      */
-    protected $_resultRedirectFactory;
+    protected $resultRedirectFactory;
+
+    /**
+     * @var \Magento\Sales\Api\OrderRepositoryInterface
+     */
+    protected $orderRepository;
+
+    /**
+     * @var \Magento\Framework\Stdlib\DateTime\DateTime
+     */
+    protected $date;
+
+    /**
+     * @var \Fooman\PrintOrderPdf\Model\Pdf\OrderFactory
+     */
+    protected $orderPdfFactory;
 
     /**
      * @param \Magento\Backend\App\Action\Context                $context
      * @param \Magento\Framework\App\Response\Http\FileFactory   $fileFactory
      * @param \Magento\Backend\Model\View\Result\RedirectFactory $resultRedirectFactory
+     * @param \Magento\Sales\Api\OrderRepositoryInterface        $orderRepository
+     * @param \Magento\Framework\Stdlib\DateTime\DateTime        $date
      */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
         \Magento\Framework\App\Response\Http\FileFactory $fileFactory,
-        \Magento\Backend\Model\View\Result\RedirectFactory $resultRedirectFactory
+        \Magento\Backend\Model\View\Result\RedirectFactory $resultRedirectFactory,
+        \Magento\Sales\Api\OrderRepositoryInterface $orderRepository,
+        \Fooman\PrintOrderPdf\Model\Pdf\OrderFactory $orderPdfFactory,
+        \Magento\Framework\Stdlib\DateTime\DateTime $date
     ) {
-        $this->_fileFactory = $fileFactory;
         parent::__construct($context);
-        $this->_resultRedirectFactory = $resultRedirectFactory;
+        $this->fileFactory = $fileFactory;
+        $this->resultRedirectFactory = $resultRedirectFactory;
+        $this->orderRepository = $orderRepository;
+        $this->orderPdfFactory = $orderPdfFactory;
+        $this->date = $date;
     }
 
     /**
@@ -56,11 +78,11 @@ class PrintAction extends \Magento\Backend\App\Action
     {
         $orderId = $this->getRequest()->getParam('order_id');
         if ($orderId) {
-            $order = $this->_objectManager->create('Magento\Sales\Model\Order')->load($orderId);
+            $order = $this->orderRepository->get($orderId);
             if ($order) {
-                $pdf = $this->_objectManager->create('Fooman\PrintOrderPdf\Model\Pdf\Order')->getPdf([$order]);
-                $date = $this->_objectManager->get('Magento\Framework\Stdlib\DateTime\DateTime')->date('Y-m-d_H-i-s');
-                return $this->_fileFactory->create(
+                $pdf = $this->orderPdfFactory->create()->getPdf([$order]);
+                $date = $this->date->date('Y-m-d_H-i-s');
+                return $this->fileFactory->create(
                     'order' . $date . '.pdf',
                     $pdf->render(),
                     DirectoryList::VAR_DIR,
@@ -68,6 +90,6 @@ class PrintAction extends \Magento\Backend\App\Action
                 );
             }
         }
-        return $this->_resultRedirectFactory->create()->setPath('sales/*/view');
+        return $this->resultRedirectFactory->create()->setPath('sales/*/view');
     }
 }
