@@ -26,6 +26,11 @@ class Common extends Injectable
     protected $fixtureFactory;
 
     /**
+     * @var \Magento\Sales\Test\Page\Adminhtml\SalesOrderView
+     */
+    protected $salesOrderView;
+
+    /**
      * Injection data.
      *
      * @param OrderIndex                                        $orderIndex
