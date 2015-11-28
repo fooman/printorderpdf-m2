@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+    /**
+    * @author     Kristof Ringleff
+    * @package    Fooman_PrintOrderPdf
+    * @copyright  Copyright (c) 2015 Fooman Limited (http://www.fooman.co.nz)
+    *
+    * For the full copyright and license information, please view the LICENSE
+    * file that was distributed with this source code.
+    */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <virtualType name="fooman_emailattachments_order_pdf_renderer" type="\Fooman\EmailAttachments\Model\PdfRenderer">
+        <arguments>
+            <argument name="pdfRenderer" xsi:type="object">\Fooman\PrintOrderPdf\Model\Pdf\Order</argument>
+        </arguments>
+    </virtualType>
+    <type name="\Fooman\EmailAttachments\Observer\AbstractSendOrderObserver">
+        <arguments>
+            <argument name="pdfRenderer" xsi:type="object">fooman_emailattachments_order_pdf_renderer</argument>
+        </arguments>
+    </type>
+</config>
