@@ -8,5 +8,17 @@
     "psr-4": {
       "Fooman\\PrintOrderPdf\\": "src/"
     }
-  }
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://repo.magento.com/"
+    }
+  ],
+  "require-dev": {
+    "phpunit/phpunit": "~4.5",
+    "magento/community-edition": "2.0.*"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }
