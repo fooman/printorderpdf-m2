@@ -1,5 +1,5 @@
 {
-  "name": "fooman/printorderpdf",
+  "name": "fooman/printorderpdf-m2",
   "description": "Print the order as a pdf from the admin",
   "type": "magento2-module",
   "license": "OSL-3.0",
