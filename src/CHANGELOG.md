@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [2.0.0] - 2015-12-09
+### Changed
+- Change folder structure to src/ and tests/
+
 ## [1.1.0] - 2015-11-29
 ### Added
 - Provide a Pdf Renderer so that Fooman Email Attachments M2 (separate extension) can attach a pdf to outgoing order confirmation emails
