@@ -73,13 +73,7 @@ class Pdforders extends \Magento\Sales\Controller\Adminhtml\Order\AbstractMassAc
      */
     protected function massAction(AbstractCollection $collection)
     {
-
-        if (!isset($pdf)) {
-            $pdf = $this->orderPdfFactory->create()->getPdf($collection);
-        } else {
-            $pages = $this->orderPdfFactory->create()->getPdf($collection);
-            $pdf->pages = array_merge($pdf->pages, $pages->pages);
-        }
+        $pdf = $this->orderPdfFactory->create()->getPdf($collection);
         $date = $this->date->date('Y-m-d_H-i-s');
 
         return $this->fileFactory->create(
