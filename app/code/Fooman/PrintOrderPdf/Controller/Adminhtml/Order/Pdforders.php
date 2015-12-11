@@ -32,11 +32,15 @@ class Pdforders extends \Magento\Sales\Controller\Adminhtml\Order\AbstractMassAc
     protected $date;
 
     /**
+     * Pdforders constructor.
+     *
      * @param \Magento\Backend\App\Action\Context                        $context
      * @param \Magento\Ui\Component\MassAction\Filter                    $filter
      * @param \Magento\Sales\Model\ResourceModel\Order\CollectionFactory $collectionFactory
      * @param \Magento\Framework\App\Response\Http\FileFactory           $fileFactory
      * @param \Magento\Backend\Model\View\Result\RedirectFactory         $resultRedirectFactory
+     * @param \Fooman\PrintOrderPdf\Model\Pdf\OrderFactory               $orderPdfFactory
+     * @param \Magento\Framework\Stdlib\DateTime\DateTime                $date
      */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,

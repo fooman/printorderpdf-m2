@@ -170,7 +170,7 @@ class OrderTest extends \PHPUnit_Framework_TestCase
 
         $orderMock->expects($this->any())->method('getOrderCurrency')->will($this->returnValue($currencyMock));
 
-        $pdf = $this->object->getPdf(array($orderMock));
+        $pdf = $this->object->getPdf([$orderMock]);
         $this->assertInstanceOf('Zend_Pdf', $pdf);
     }
 
