@@ -9,7 +9,6 @@ use Magento\Sales\Test\Fixture\OrderInjectable;
 
 class AssertResponseIsMultiplePdfs extends AbstractAssertPdf
 {
-
     /**
      * @param \Magento\Mtf\Config\DataInterface $config
      * @param CurlTransport                     $transport
@@ -72,5 +71,4 @@ class AssertResponseIsMultiplePdfs extends AbstractAssertPdf
 
         return $data;
     }
-
 }

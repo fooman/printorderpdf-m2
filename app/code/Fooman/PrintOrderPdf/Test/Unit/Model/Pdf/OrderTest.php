@@ -77,7 +77,6 @@ class OrderTest extends \PHPUnit_Framework_TestCase
         ];
 
         $this->_object = $objectManager->getObject('Fooman\PrintOrderPdf\Model\Pdf\Order', $orderConstructorArgs);
-
     }
 
     public function testGetPdf()

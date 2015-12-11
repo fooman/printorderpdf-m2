@@ -8,7 +8,6 @@ use Magento\Mtf\Util\Protocol\CurlTransport\BackendDecorator;
 
 class AssertResponseIsPdf extends AbstractAssertPdf
 {
-
     /**
      * @param \Magento\Mtf\Config\DataInterface $config
      * @param CurlTransport                     $transport
@@ -47,5 +46,4 @@ class AssertResponseIsPdf extends AbstractAssertPdf
             'Pdf is not the expected version'
         );
     }
-
 }

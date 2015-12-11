@@ -13,7 +13,6 @@ use Magento\Framework\App\Filesystem\DirectoryList;
 
 class PrintAction extends \Magento\Backend\App\Action
 {
-
     /**
      * @var \Magento\Framework\App\Response\Http\FileFactory
      */

@@ -14,7 +14,6 @@ use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 
 class Pdforders extends \Magento\Sales\Controller\Adminhtml\Order\AbstractMassAction
 {
-
     protected $collectionFactory;
 
     /**

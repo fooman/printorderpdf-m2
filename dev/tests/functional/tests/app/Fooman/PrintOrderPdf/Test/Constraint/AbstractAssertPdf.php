@@ -2,7 +2,6 @@
 
 namespace Fooman\PrintOrderPdf\Test\Constraint;
 
-
 class AbstractAssertPdf extends \Magento\Mtf\Constraint\AbstractConstraint
 {
     /**
@@ -21,7 +20,6 @@ class AbstractAssertPdf extends \Magento\Mtf\Constraint\AbstractConstraint
      */
     protected function getHeaderValue($fullHeader, $key)
     {
-
         if (function_exists('http_parse_headers')) {
             $headerParsed = http_parse_headers($fullHeader);
             if (isset($headerParsed[$key])) {

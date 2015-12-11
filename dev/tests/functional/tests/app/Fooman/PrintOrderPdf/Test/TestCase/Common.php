@@ -7,10 +7,8 @@ use Magento\Sales\Test\Page\Adminhtml\OrderIndex;
 use Magento\Mtf\Fixture\FixtureFactory;
 use Magento\Mtf\TestCase\Injectable;
 
-
 class Common extends Injectable
 {
-
     /**
      * Order index page.
      *
@@ -61,7 +59,6 @@ class Common extends Injectable
         $order = $this->fixtureFactory->createByCode('orderInjectable', ['dataset' => 'with_coupon']);
         $order->persist();
         return $order;
-
     }
 
     /**

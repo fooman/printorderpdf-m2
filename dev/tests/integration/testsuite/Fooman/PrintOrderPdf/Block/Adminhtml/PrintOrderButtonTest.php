@@ -14,7 +14,6 @@ namespace Fooman\PrintOrderPdf\Block\Adminhtml;
  */
 class PrintOrderButtonTest extends \Magento\TestFramework\TestCase\AbstractBackendController
 {
-
     public function setUp()
     {
         $this->resource = 'Magento_Sales::sales_order';

@@ -10,7 +10,6 @@ namespace Fooman\PrintOrderPdf\Test\TestCase;
  */
 class PrintOrderFromAdminTest extends Common
 {
-
     /**
      * Steps:
      *
@@ -31,6 +30,4 @@ class PrintOrderFromAdminTest extends Common
 
         return ['url' => $this->salesOrderView->getPrintActions()->printUrl()];
     }
-
-
 }
