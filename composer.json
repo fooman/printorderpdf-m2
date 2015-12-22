@@ -9,6 +9,11 @@
       "Fooman\\PrintOrderPdf\\": "src/"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "Fooman\\PrintOrderPdf\\Test\\": "tests/unit/Test/"
+    }
+  },
   "repositories": [
     {
       "type": "composer",
