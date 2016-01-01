@@ -41,21 +41,19 @@ class PrintAction extends \Magento\Backend\App\Action
     /**
      * @param \Magento\Backend\App\Action\Context                $context
      * @param \Magento\Framework\App\Response\Http\FileFactory   $fileFactory
-     * @param \Magento\Backend\Model\View\Result\RedirectFactory $resultRedirectFactory
      * @param \Magento\Sales\Api\OrderRepositoryInterface        $orderRepository
      * @param \Magento\Framework\Stdlib\DateTime\DateTime        $date
      */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
         \Magento\Framework\App\Response\Http\FileFactory $fileFactory,
-        \Magento\Backend\Model\View\Result\RedirectFactory $resultRedirectFactory,
         \Magento\Sales\Api\OrderRepositoryInterface $orderRepository,
         \Fooman\PrintOrderPdf\Model\Pdf\OrderFactory $orderPdfFactory,
         \Magento\Framework\Stdlib\DateTime\DateTime $date
     ) {
         parent::__construct($context);
         $this->fileFactory = $fileFactory;
-        $this->resultRedirectFactory = $resultRedirectFactory;
+        $this->resultRedirectFactory = $context->getResultRedirectFactory();
         $this->orderRepository = $orderRepository;
         $this->orderPdfFactory = $orderPdfFactory;
         $this->date = $date;

@@ -21,10 +21,6 @@ class Pdforders extends \Magento\Sales\Controller\Adminhtml\Order\AbstractMassAc
      */
     protected $fileFactory;
 
-    /**
-     * @var \Magento\Backend\Model\View\Result\RedirectFactory
-     */
-    protected $resultRedirectFactory;
 
     /**
      * @var \Magento\Framework\Stdlib\DateTime\DateTime
@@ -38,7 +34,6 @@ class Pdforders extends \Magento\Sales\Controller\Adminhtml\Order\AbstractMassAc
      * @param \Magento\Ui\Component\MassAction\Filter                    $filter
      * @param \Magento\Sales\Model\ResourceModel\Order\CollectionFactory $collectionFactory
      * @param \Magento\Framework\App\Response\Http\FileFactory           $fileFactory
-     * @param \Magento\Backend\Model\View\Result\RedirectFactory         $resultRedirectFactory
      * @param \Fooman\PrintOrderPdf\Model\Pdf\OrderFactory               $orderPdfFactory
      * @param \Magento\Framework\Stdlib\DateTime\DateTime                $date
      */
@@ -47,13 +42,11 @@ class Pdforders extends \Magento\Sales\Controller\Adminhtml\Order\AbstractMassAc
         \Magento\Ui\Component\MassAction\Filter $filter,
         \Magento\Sales\Model\ResourceModel\Order\CollectionFactory $collectionFactory,
         \Magento\Framework\App\Response\Http\FileFactory $fileFactory,
-        \Magento\Backend\Model\View\Result\RedirectFactory $resultRedirectFactory,
         \Fooman\PrintOrderPdf\Model\Pdf\OrderFactory $orderPdfFactory,
         \Magento\Framework\Stdlib\DateTime\DateTime $date
     ) {
         $this->collectionFactory = $collectionFactory;
         $this->fileFactory = $fileFactory;
-        $this->resultRedirectFactory = $resultRedirectFactory;
         $this->orderPdfFactory = $orderPdfFactory;
         $this->date = $date;
         parent::__construct($context, $filter);
