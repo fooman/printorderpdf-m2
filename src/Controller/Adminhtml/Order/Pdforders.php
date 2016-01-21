@@ -14,7 +14,6 @@ use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 
 class Pdforders extends \Magento\Sales\Controller\Adminhtml\Order\AbstractMassAction
 {
-
     protected $collectionFactory;
 
     /**
@@ -22,10 +21,6 @@ class Pdforders extends \Magento\Sales\Controller\Adminhtml\Order\AbstractMassAc
      */
     protected $fileFactory;
 
-    /**
-     * @var \Magento\Backend\Model\View\Result\RedirectFactory
-     */
-    protected $resultRedirectFactory;
 
     /**
      * @var \Magento\Framework\Stdlib\DateTime\DateTime
@@ -33,24 +28,25 @@ class Pdforders extends \Magento\Sales\Controller\Adminhtml\Order\AbstractMassAc
     protected $date;
 
     /**
+     * Pdforders constructor.
+     *
      * @param \Magento\Backend\App\Action\Context                        $context
      * @param \Magento\Ui\Component\MassAction\Filter                    $filter
      * @param \Magento\Sales\Model\ResourceModel\Order\CollectionFactory $collectionFactory
      * @param \Magento\Framework\App\Response\Http\FileFactory           $fileFactory
-     * @param \Magento\Backend\Model\View\Result\RedirectFactory         $resultRedirectFactory
+     * @param \Fooman\PrintOrderPdf\Model\Pdf\OrderFactory               $orderPdfFactory
+     * @param \Magento\Framework\Stdlib\DateTime\DateTime                $date
      */
     public function __construct(
         \Magento\Backend\App\Action\Context $context,
         \Magento\Ui\Component\MassAction\Filter $filter,
         \Magento\Sales\Model\ResourceModel\Order\CollectionFactory $collectionFactory,
         \Magento\Framework\App\Response\Http\FileFactory $fileFactory,
-        \Magento\Backend\Model\View\Result\RedirectFactory $resultRedirectFactory,
         \Fooman\PrintOrderPdf\Model\Pdf\OrderFactory $orderPdfFactory,
         \Magento\Framework\Stdlib\DateTime\DateTime $date
     ) {
         $this->collectionFactory = $collectionFactory;
         $this->fileFactory = $fileFactory;
-        $this->resultRedirectFactory = $resultRedirectFactory;
         $this->orderPdfFactory = $orderPdfFactory;
         $this->date = $date;
         parent::__construct($context, $filter);
@@ -73,13 +69,7 @@ class Pdforders extends \Magento\Sales\Controller\Adminhtml\Order\AbstractMassAc
      */
     protected function massAction(AbstractCollection $collection)
     {
-
-        if (!isset($pdf)) {
-            $pdf = $this->orderPdfFactory->create()->getPdf($collection);
-        } else {
-            $pages = $this->orderPdfFactory->create()->getPdf($collection);
-            $pdf->pages = array_merge($pdf->pages, $pages->pages);
-        }
+        $pdf = $this->orderPdfFactory->create()->getPdf($collection);
         $date = $this->date->date('Y-m-d_H-i-s');
 
         return $this->fileFactory->create(

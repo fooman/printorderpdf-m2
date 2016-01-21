@@ -13,7 +13,6 @@ use Magento\Sales\Model\Order\Pdf\Invoice;
 
 class Order extends Invoice
 {
-
     /**
      * Return PDF document
      *

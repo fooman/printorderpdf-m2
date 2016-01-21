@@ -4,7 +4,6 @@ namespace Fooman\PrintOrderPdf\Test\Block\Adminhtml\Order;
 
 class Actions extends \Magento\Sales\Test\Block\Adminhtml\Order\Actions
 {
-
     /**
      * 'Print' button
      *

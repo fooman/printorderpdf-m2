@@ -12,7 +12,7 @@ class OrderTest extends \PHPUnit_Framework_TestCase
     /**
      * @var \Fooman\PrintOrderPdf\Model\Pdf\Order
      */
-    protected $_object;
+    protected $object;
 
     public function setUp()
     {
@@ -76,8 +76,7 @@ class OrderTest extends \PHPUnit_Framework_TestCase
             []
         ];
 
-        $this->_object = $objectManager->getObject('Fooman\PrintOrderPdf\Model\Pdf\Order', $orderConstructorArgs);
-
+        $this->object = $objectManager->getObject('Fooman\PrintOrderPdf\Model\Pdf\Order', $orderConstructorArgs);
     }
 
     public function testGetPdf()
@@ -171,7 +170,7 @@ class OrderTest extends \PHPUnit_Framework_TestCase
 
         $orderMock->expects($this->any())->method('getOrderCurrency')->will($this->returnValue($currencyMock));
 
-        $pdf = $this->_object->getPdf(array($orderMock));
+        $pdf = $this->object->getPdf([$orderMock]);
         $this->assertInstanceOf('Zend_Pdf', $pdf);
     }
 

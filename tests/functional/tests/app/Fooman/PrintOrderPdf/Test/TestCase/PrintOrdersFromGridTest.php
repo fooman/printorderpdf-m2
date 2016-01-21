@@ -10,7 +10,6 @@ namespace Fooman\PrintOrderPdf\Test\TestCase;
  */
 class PrintOrdersFromGridTest extends Common
 {
-
     /**
      * @param int $nrOrders
      *
@@ -26,6 +25,4 @@ class PrintOrdersFromGridTest extends Common
 
         return ['orders' => $orders];
     }
-
-
 }
