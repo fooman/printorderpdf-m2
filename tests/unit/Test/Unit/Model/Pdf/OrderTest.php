@@ -212,7 +212,7 @@ class OrderTest extends \PHPUnit_Framework_TestCase
         $directoryMock->expects($this->any())->method('getAbsolutePath')->will(
             $this->returnCallback(
                 function ($argument) {
-                    return BP . '/' . $argument;
+                    return __DIR__.'/../../../../../../vendor/magento/magento2ce/' . $argument;
                 }
             )
         );

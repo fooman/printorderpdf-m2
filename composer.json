@@ -15,22 +15,30 @@
   "autoload-dev": {
     "psr-4": {
       "Fooman\\PrintOrderPdf\\Test\\": "tests/unit/Test/"
-    }
+    },
+    "files": [
+      "tests/unit/Test/Unit/var/StoreExtensionInterface.php",
+      "tests/unit/Test/Unit/var/OrderPaymentExtensionInterface.php"
+    ]
   },
   "repositories": [
     {
       "type": "composer",
       "url": "https://repo.magento.com/"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/magento/magento2.git"
     }
+
   ],
   "require-dev": {
-    "magento/module-backend": "~100.0.2",
-    "magento/module-sales": "~100.0.2",
+    "magento/magento2ce":"*",
     "phpunit/phpunit": "^4.5"
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
   "extra": {
-    "magento-root-dir": "./vendor/magento/community-edition"
+    "magento-root-dir": "./vendor/magento/magento2ce"
   }
 }
