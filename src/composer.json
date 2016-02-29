@@ -1,0 +1,44 @@
+{
+  "name": "fooman/printorderpdf-m2",
+  "description": "Print the order as a pdf from the admin",
+  "type": "magento2-module",
+  "license": "OSL-3.0",
+  "version": "2.0.1",
+  "autoload": {
+    "psr-4": {
+      "Fooman\\PrintOrderPdf\\": "src/"
+    },
+    "files": [
+      "src/registration.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Fooman\\PrintOrderPdf\\Test\\": "tests/unit/Test/"
+    },
+    "files": [
+      "tests/unit/Test/Unit/var/StoreExtensionInterface.php",
+      "tests/unit/Test/Unit/var/OrderPaymentExtensionInterface.php"
+    ]
+  },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://repo.magento.com/"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/magento/magento2.git"
+    }
+
+  ],
+  "require-dev": {
+    "magento/magento2ce":"*",
+    "phpunit/phpunit": "^4.5"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "extra": {
+    "magento-root-dir": "./vendor/magento/magento2ce"
+  }
+}
