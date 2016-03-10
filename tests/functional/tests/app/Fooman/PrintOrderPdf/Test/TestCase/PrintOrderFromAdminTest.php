@@ -2,6 +2,7 @@
 
 namespace Fooman\PrintOrderPdf\Test\TestCase;
 
+use Magento\Sales\Test\Fixture\OrderInjectable;
 /**
  * Class PrintOrderFromAdmin
  *
@@ -19,10 +20,10 @@ class PrintOrderFromAdminTest extends Common
      *
      * @return array
      */
-    public function testPrint()
+    public function test(OrderInjectable $order)
     {
         // Preconditions
-        $order = $this->createOrder();
+        $order->persist();
 
         // Steps
         $this->orderIndex->open();
