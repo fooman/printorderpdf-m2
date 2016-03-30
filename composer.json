@@ -22,15 +22,12 @@
       "type": "composer",
       "url": "https://repo.magento.com/"
     }
+
   ],
   "require-dev": {
-    "magento/module-backend": "~100.0.2",
-    "magento/module-sales": "~100.0.2",
+    "magento/magento2ce":"*",
     "phpunit/phpunit": "^4.5"
   },
   "minimum-stability": "dev",
-  "prefer-stable": true,
-  "extra": {
-    "magento-root-dir": "./vendor/magento/community-edition"
-  }
+  "prefer-stable": true
 }

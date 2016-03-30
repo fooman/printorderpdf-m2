@@ -6,29 +6,21 @@
   "version": "2.0.1",
   "autoload": {
     "psr-4": {
-      "Fooman\\PrintOrderPdf\\": "src/"
+      "Fooman\\PrintOrderPdf\\": ""
     },
     "files": [
-      "src/registration.php"
+      "registration.php"
     ]
   },
   "autoload-dev": {
     "psr-4": {
       "Fooman\\PrintOrderPdf\\Test\\": "tests/unit/Test/"
-    },
-    "files": [
-      "tests/unit/Test/Unit/var/StoreExtensionInterface.php",
-      "tests/unit/Test/Unit/var/OrderPaymentExtensionInterface.php"
-    ]
+    }
   },
   "repositories": [
     {
       "type": "composer",
       "url": "https://repo.magento.com/"
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/magento/magento2.git"
     }
 
   ],
@@ -37,8 +29,5 @@
     "phpunit/phpunit": "^4.5"
   },
   "minimum-stability": "dev",
-  "prefer-stable": true,
-  "extra": {
-    "magento-root-dir": "./vendor/magento/magento2ce"
-  }
+  "prefer-stable": true
 }
