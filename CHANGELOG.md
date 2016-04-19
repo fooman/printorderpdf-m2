@@ -1,6 +1,8 @@
 # Change Log
 
 ## [Unreleased]
+
+## [2.0.2] 2016-03-30
 ### Changed
 - Test improvements
 
