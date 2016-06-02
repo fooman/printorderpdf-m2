@@ -1,6 +1,8 @@
 # Change Log
 
 ## [Unreleased]
+### Changed
+- Widen Dependency Statement
 
 ## [2.0.2] 2016-03-30
 ### Changed
