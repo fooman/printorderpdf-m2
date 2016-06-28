@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="urn:magento:framework:Ui/etc/ui_configuration.xsd">
-    <container name="listing_top">
+    <listingToolbar name="listing_top">
         <massaction name="listing_massaction">
             <action name="fooman_pdforders">
                 <argument name="data" xsi:type="array">
@@ -13,6 +13,6 @@
                 </argument>
             </action>
         </massaction>
-    </container>
+    </listingToolbar>
 </listing>
 
