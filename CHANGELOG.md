@@ -1,5 +1,7 @@
 # Change Log
 
+## [Unreleased]
+
 ## [2.0.3] 2016-06-29
 ### Changed
 - Compatibility with Magento 2.1, for Magento 2.0 use earlier versions
