@@ -9,7 +9,7 @@
  */
 namespace Fooman\PrintOrderPdf\Model\Pdf;
 
-class BundleItems extends Magento\Bundle\Model\Sales\Order\Pdf\Items\Invoice
+class BundleItems extends \Magento\Bundle\Model\Sales\Order\Pdf\Items\Invoice
 {
     public function getChildren($orderItem)
     {
@@ -37,4 +37,3 @@ class BundleItems extends Magento\Bundle\Model\Sales\Order\Pdf\Items\Invoice
         }
     }
 }
-
