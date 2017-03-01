@@ -35,6 +35,15 @@ class OrderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @magentoDataFixture Magento/Bundle/_files/order_item_with_bundle_and_options.php
+     */
+    public function testGetPdfWithBundleItem()
+    {
+        $order = $this->prepareOrder();
+        $this->assertInstanceOf('Zend_Pdf', $this->pdf->getPdf([$order]));
+    }
+
+    /**
      * @return mixed
      */
     protected function prepareOrder()
