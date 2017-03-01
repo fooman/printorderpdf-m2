@@ -1,6 +1,8 @@
 # Change Log
 
 ## [Unreleased]
+### Added
+- Support for bundled products
 
 ## [2.0.3] 2016-06-29
 ### Changed
