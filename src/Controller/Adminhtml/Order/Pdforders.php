@@ -73,7 +73,7 @@ class Pdforders extends \Magento\Sales\Controller\Adminhtml\Order\AbstractMassAc
         $date = $this->date->date('Y-m-d_H-i-s');
 
         return $this->fileFactory->create(
-            'orders' . $date . '.pdf',
+            __('orders') . '_' . $date . '.pdf',
             $pdf->render(),
             DirectoryList::VAR_DIR,
             'application/pdf'
