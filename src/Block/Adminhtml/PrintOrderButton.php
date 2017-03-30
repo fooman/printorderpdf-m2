@@ -37,7 +37,7 @@ class PrintOrderButton extends \Magento\Backend\Block\Widget\Container
         $this->addButton(
             'fooman_print',
             [
-                'label'   => 'Print',
+                'label'   => __('Print'),
                 'class'   => 'print',
                 'onclick' => 'setLocation(\'' . $this->getPdfPrintUrl() . '\')'
             ]
