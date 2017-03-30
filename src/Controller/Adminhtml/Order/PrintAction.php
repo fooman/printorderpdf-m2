@@ -80,7 +80,7 @@ class PrintAction extends \Magento\Backend\App\Action
                 $pdf = $this->orderPdfFactory->create()->getPdf([$order]);
                 $date = $this->date->date('Y-m-d_H-i-s');
                 return $this->fileFactory->create(
-                    'order' . $date . '.pdf',
+                    __('order') . '_' . $date . '.pdf',
                     $pdf->render(),
                     DirectoryList::VAR_DIR,
                     'application/pdf'
