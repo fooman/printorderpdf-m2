@@ -1,35 +1,35 @@
 {
-  "name": "fooman/printorderpdf-m2",
-  "description": "Print the order as a pdf from the admin",
-  "type": "magento2-module",
-  "license": "OSL-3.0",
-  "version": "2.1.0",
-  "autoload": {
-    "psr-4": {
-      "Fooman\\PrintOrderPdf\\": "src/"
+    "name": "fooman/printorderpdf-m2",
+    "description": "Print the order as a pdf from the admin",
+    "type": "magento2-module",
+    "license": "OSL-3.0",
+    "version": "2.1.0",
+    "autoload": {
+        "psr-4": {
+            "Fooman\\PrintOrderPdf\\": "src/"
+        },
+        "files": [
+            "src/registration.php"
+        ]
     },
-    "files": [
-      "src/registration.php"
-    ]
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Fooman\\PrintOrderPdf\\Test\\": "tests/unit/Test/"
-    }
-  },
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "https://repo.magento.com/"
-    }
-  ],
-  "require": {
-    "magento/module-backend": "^100.1.0",
-    "magento/module-sales": "^100.1.0"
-  },
-  "require-dev": {
-    "phpunit/phpunit": "^4.5"
-  },
-  "minimum-stability": "dev",
-  "prefer-stable": true
+    "repositories": {
+        "0": {
+            "type": "composer",
+            "url": "https://repo.magento.com/"
+        },
+        "fooman-magento2-dev-bootstrap": {
+            "type": "vcs",
+            "url": "http://github.com/fooman/magento2-dev-bootstrap"
+        }
+    },
+    "require": {
+        "magento/module-backend": "^100.1.0",
+        "magento/module-sales": "^100.1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.5",
+        "fooman/magento2-dev-bootstrap": "dev-master"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
