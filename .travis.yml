@@ -3,8 +3,10 @@ php:
   - 5.5
   - 5.6
   - 7.0
+  - 7.1
 
 before_install:
+  - mkdir -p app/etc
   - composer config http-basic.repo.magento.com $MAGENTO_REPO_PUBLIC_KEY $MAGENTO_REPO_PRIVATE_KEY
 
 install:
