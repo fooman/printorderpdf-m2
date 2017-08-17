@@ -30,31 +30,25 @@ class OrderTest extends \PHPUnit\Framework\TestCase
         $storeManagerMock = $this->getMockForAbstractClass('Magento\Store\Model\StoreManagerInterface');
         $storeManagerMock->expects($this->any())->method('getStore')->will($this->returnValue($storeMock));
 
-        $scopeConfigMock = $this->getMock('Magento\Framework\App\Config\ScopeConfigInterface');
-        $localeDataMock = $this->getMock('Magento\Framework\Stdlib\DateTime\TimezoneInterface');
-        $inlineTranslationMock = $this->getMock('Magento\Framework\Translate\Inline\StateInterface');
-        $localeResolverMock = $this->getMock('Magento\Framework\Locale\ResolverInterface');
+        $scopeConfigMock = $this->createMock('Magento\Framework\App\Config\ScopeConfigInterface');
+        $localeDataMock = $this->createMock('Magento\Framework\Stdlib\DateTime\TimezoneInterface');
+        $inlineTranslationMock = $this->createMock('Magento\Framework\Translate\Inline\StateInterface');
+        $localeResolverMock = $this->createMock('Magento\Framework\Locale\ResolverInterface');
 
         $paymentDataMock = $this->getPaymentDataMock();
 
-        $pdfTotalFactoryMock = $this->getMock(
+        $pdfTotalFactoryMock = $this->createPartialMock(
             'Magento\Sales\Model\Order\Pdf\Total\Factory',
-            ['create'],
-            [],
-            '',
-            false
+            ['create']
         );
 
         $pdfTotalFactoryMock->expects($this->any())->method('create')->will(
             $this->returnValue($objectManager->getObject('Magento\Sales\Model\Order\Pdf\Total\DefaultTotal'))
         );
 
-        $pdfItemsFactoryMock = $this->getMock(
+        $pdfItemsFactoryMock = $this->createPartialMock(
             'Magento\Sales\Model\Order\Pdf\ItemsFactory',
-            ['get'],
-            [],
-            '',
-            false
+            ['get']
         );
         $pdfItemsFactoryMock->expects($this->any())->method('get')->will(
             $this->returnValue($objectManager->getObject('Magento\Sales\Model\Order\Pdf\Items\Invoice\DefaultInvoice'))
@@ -81,25 +75,27 @@ class OrderTest extends \PHPUnit\Framework\TestCase
 
     public function testGetPdf()
     {
-        $orderMock = $this->getMock(
+        $orderMock = $this->createPartialMock(
             'Magento\Sales\Model\Order',
-            ['getBillingAddress', 'getShippingAddress', 'getStore', 'getCreatedAtStoreDate', 'getPayment',
-             'getOrderCurrency', 'getAllItems', 'getStoreId'],
-            [],
-            '',
-            false
+            [
+                'getBillingAddress',
+                'getShippingAddress',
+                'getStore',
+                'getCreatedAtStoreDate',
+                'getPayment',
+                'getOrderCurrency',
+                'getAllItems',
+                'getStoreId'
+            ]
         );
 
         $orderMock->expects($this->any())->method('getStoreId')->will(
             $this->returnValue(\Magento\Store\Model\Store::DISTRO_STORE_ID)
         );
 
-        $orderItemMock = $this->getMock(
+        $orderItemMock = $this->createPartialMock(
             'Magento\Sales\Model\Order\Item',
-            ['getProductType'],
-            [],
-            '',
-            false
+            ['getProductType']
         );
         $orderItemMock->expects($this->any())->method('getProductType')->will(
             $this->returnValue(
@@ -107,12 +103,9 @@ class OrderTest extends \PHPUnit\Framework\TestCase
             )
         );
 
-        $orderParentItemMock = $this->getMock(
+        $orderParentItemMock = $this->createPartialMock(
             'Magento\Sales\Model\Order\Item',
-            ['getParentItem'],
-            [],
-            '',
-            false
+            ['getParentItem']
         );
         $orderParentItemMock->expects($this->any())->method('getParentItem')->will(
             $this->returnValue(
@@ -124,13 +117,9 @@ class OrderTest extends \PHPUnit\Framework\TestCase
             $this->returnValue([$orderParentItemMock, $orderItemMock])
         );
 
-
-        $addressMock = $this->getMock(
+        $addressMock = $this->createPartialMock(
             'Magento\Sales\Model\Order\Address',
-            ['format'],
-            [],
-            '',
-            false
+            ['format']
         );
         $addressMock->expects($this->any())->method('format')->will(
             $this->returnValue(
@@ -140,34 +129,12 @@ class OrderTest extends \PHPUnit\Framework\TestCase
         $orderMock->expects($this->any())->method('getBillingAddress')->will($this->returnValue($addressMock));
         $orderMock->expects($this->any())->method('getShippingAddress')->will($this->returnValue($addressMock));
 
+        $paymentMock = $this->createMock('Magento\Sales\Model\Order\Payment');
+        $dateMock = $this->createMock('Magento\Framework\Stdlib\DateTime\Date');
+        $currencyMock = $this->createMock('Magento\Directory\Model\Currency');
 
-        $paymentMock = $this->getMock(
-            'Magento\Sales\Model\Order\Payment',
-            [],
-            [],
-            '',
-            false
-        );
         $orderMock->expects($this->any())->method('getPayment')->will($this->returnValue($paymentMock));
-
-
-        $dateMock = $this->getMock(
-            'Magento\Framework\Stdlib\DateTime\Date',
-            [],
-            [],
-            '',
-            false
-        );
         $orderMock->expects($this->any())->method('getCreatedAtStoreDate')->will($this->returnValue($dateMock));
-
-        $currencyMock = $this->getMock(
-            'Magento\Directory\Model\Currency',
-            [],
-            [],
-            '',
-            false
-        );
-
         $orderMock->expects($this->any())->method('getOrderCurrency')->will($this->returnValue($currencyMock));
 
         $pdf = $this->object->getPdf([$orderMock]);
@@ -179,12 +146,9 @@ class OrderTest extends \PHPUnit\Framework\TestCase
      */
     protected function getPdfConfigMock()
     {
-        $pdfConfigMock = $this->getMock(
+        $pdfConfigMock = $this->createPartialMock(
             'Magento\Sales\Model\Order\Pdf\Config',
-            ['getRenderersPerProduct', 'getTotals'],
-            [],
-            '',
-            false
+            ['getRenderersPerProduct', 'getTotals']
         );
         $pdfConfigMock->expects($this->any())->method('getRenderersPerProduct')->will(
             $this->returnValue(['default' => '>\Magento\Sales\Model\Order\Pdf\Items\Invoice\DefaultInvoice'])
@@ -201,13 +165,9 @@ class OrderTest extends \PHPUnit\Framework\TestCase
      */
     protected function getDirectoryMock()
     {
-        $directoryMock = $this->getMock(
+        $directoryMock = $this->createPartialMock(
             'Magento\Framework\Filesystem\Directory\Write',
-            [],
-            [],
-            '',
-            false,
-            false
+            ['getAbsolutePath']
         );
         $directoryMock->expects($this->any())->method('getAbsolutePath')->will(
             $this->returnCallback(
@@ -226,7 +186,10 @@ class OrderTest extends \PHPUnit\Framework\TestCase
      */
     protected function getFileSystemMock($directoryMock)
     {
-        $filesystemMock = $this->getMock('Magento\Framework\Filesystem', [], [], '', false, false);
+        $filesystemMock = $this->createPartialMock(
+            'Magento\Framework\Filesystem',
+            ['getDirectoryRead','getDirectoryWrite']
+        );
         $filesystemMock->expects($this->any())->method('getDirectoryRead')->will($this->returnValue($directoryMock));
         $filesystemMock->expects($this->any())->method('getDirectoryWrite')->will($this->returnValue($directoryMock));
         return $filesystemMock;
@@ -237,20 +200,14 @@ class OrderTest extends \PHPUnit\Framework\TestCase
      */
     protected function getPaymentDataMock()
     {
-        $paymentDataMock = $this->getMock(
+        $paymentDataMock = $this->createPartialMock(
             'Magento\Payment\Helper\Data',
-            ['getInfoBlock'],
-            [],
-            '',
-            false
+            ['getInfoBlock']
         );
 
-        $blockMock = $this->getMock(
+        $blockMock = $this->createPartialMock(
             'Magento\Framework\View\Element\Template',
-            ['toPdf'],
-            [],
-            '',
-            false
+            ['toPdf']
         );
         $blockMock->expects($this->any())->method('toPdf')->will($this->returnValue('PAYMENT INFO'));
 
