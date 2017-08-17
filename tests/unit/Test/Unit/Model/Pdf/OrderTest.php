@@ -3,6 +3,12 @@ namespace Fooman\PrintOrderPdf\Test\Unit\Model\Pdf;
 
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager;
 
+//work with both Phpunit 4 (Magento 2.0/2.1)
+//and Phpunit 6 (Magento 2.2)
+if (!class_exists('PHPUnit_Framework_TestCase')) {
+    class PHPUnit_Framework_TestCase extends \PHPUnit\Framework\TestCase {}
+}
+
 /**
  * Test for
  * @see Fooman\PrintOrderPdf\Model\Pdf\Order
