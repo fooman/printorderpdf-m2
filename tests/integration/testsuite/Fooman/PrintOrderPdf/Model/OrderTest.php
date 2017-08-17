@@ -10,7 +10,7 @@
 namespace Fooman\PrintOrderPdf\Model;
 
 /**
- * @magentoAppArea frontend
+ * @magentoAppArea adminhtml
  */
 class OrderTest extends \PHPUnit\Framework\TestCase
 {
