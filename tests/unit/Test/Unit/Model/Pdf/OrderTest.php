@@ -81,7 +81,6 @@ class OrderTest extends \PHPUnit\Framework\TestCase
                 'getBillingAddress',
                 'getShippingAddress',
                 'getStore',
-                'getCreatedAtStoreDate',
                 'getPayment',
                 'getOrderCurrency',
                 'getAllItems',
@@ -130,11 +129,9 @@ class OrderTest extends \PHPUnit\Framework\TestCase
         $orderMock->expects($this->any())->method('getShippingAddress')->will($this->returnValue($addressMock));
 
         $paymentMock = $this->createMock('Magento\Sales\Model\Order\Payment');
-        $dateMock = $this->createMock('Magento\Framework\Stdlib\DateTime\Date');
         $currencyMock = $this->createMock('Magento\Directory\Model\Currency');
 
         $orderMock->expects($this->any())->method('getPayment')->will($this->returnValue($paymentMock));
-        $orderMock->expects($this->any())->method('getCreatedAtStoreDate')->will($this->returnValue($dateMock));
         $orderMock->expects($this->any())->method('getOrderCurrency')->will($this->returnValue($currencyMock));
 
         $pdf = $this->object->getPdf([$orderMock]);
