@@ -42,10 +42,10 @@ class PrintOrderButtonTest extends \Magento\TestFramework\TestCase\AbstractBacke
     public function testStandardMassactionsShow()
     {
         $this->dispatch('backend/sales/order');
-        $this->assertContains('"type":"cancel","label":"Cancel"', $this->getResponse()->getBody());
-        $this->assertContains(
-            '"type":"print_shipping_label","label":"Print Shipping Labels"',
-            $this->getResponse()->getBody()
-        );
+        $body = $this->getResponse()->getBody();
+        $this->assertContains('"type":"cancel"', $body);
+        $this->assertContains('"label":"Cancel"', $body);
+        $this->assertContains('"label":"Print Shipping Labels"', $body);
+        $this->assertContains('"type":"print_shipping_label"', $body);
     }
 }

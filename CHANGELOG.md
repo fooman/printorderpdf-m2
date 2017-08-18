@@ -1,5 +1,9 @@
 # Change Log
 
+## [Unreleased]
+### Added
+- Added support for PHP 7.1
+
 ## [2.1.0] 2017-03-01
 ### Added
 - Support for bundled products
