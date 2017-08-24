@@ -1,0 +1,26 @@
+<?php
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See https://github.com/magento/magento2/blob/2.1.8/COPYING.txt for license details.
+ */
+
+/**
+ * @var \Magento\Payment\Block\Info $block
+ */
+
+/**
+ * when creating a pdf from a frontend context, the admin pdf template is not found
+ * use the copy provided by this extension here instead
+ */
+?>
+<?php echo $block->escapeHtml($block->getMethod()->getTitle()); ?>{{pdf_row_separator}}
+
+<?php if ($specificInfo = $block->getSpecificInformation()):?>
+    <?php foreach ($specificInfo as $label => $value):?>
+        <?php echo $block->escapeHtml($label) ?>:
+        <?php echo $block->escapeHtml(implode(' ', $block->getValueAsArray($value)));?>
+        {{pdf_row_separator}}
+    <?php endforeach; ?>
+<?php endif;?>
+
+<?php echo $block->escapeHtml(implode('{{pdf_row_separator}}', $block->getChildPdfAsArray())); ?>

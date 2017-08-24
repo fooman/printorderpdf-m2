@@ -1,6 +1,8 @@
 # Change Log
 
 ## [Unreleased]
+### Fixed
+- Empty payment details by providing frontend pdf template for known template files
 ### Added
 - Added support for PHP 7.1
 
