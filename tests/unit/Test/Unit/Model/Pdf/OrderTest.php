@@ -169,6 +169,10 @@ class OrderTest extends \PHPUnit\Framework\TestCase
         $directoryMock->expects($this->any())->method('getAbsolutePath')->will(
             $this->returnCallback(
                 function ($argument) {
+                    if (strpos($argument, 'lib/internal/LinLibertineFont/') === 0) {
+                        $argument = str_replace('lib/internal/', '', $argument);
+                        return __DIR__ . '/_files/' . $argument;
+                    }
                     return BP . '/' . $argument;
                 }
             )
