@@ -1,5 +1,7 @@
 # Change Log
 
+## [Unreleased]
+
 ## [2.2.0] 2017-08-25
 ### Fixed
 - Empty payment details by providing frontend pdf template for known template files
