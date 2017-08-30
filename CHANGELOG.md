@@ -1,6 +1,8 @@
 # Change Log
 
 ## [Unreleased]
+### Changed
+- Added preprocessing of tests to run across 2.1/2.2
 
 ## [2.2.0] 2017-08-25
 ### Fixed
