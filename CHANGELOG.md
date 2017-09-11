@@ -1,5 +1,7 @@
 # Change Log
 
+## [Unreleased]
+
 ## [2.2.2] 2017-09-11
 ### Changed
 - Allow for different pdf versions in test
