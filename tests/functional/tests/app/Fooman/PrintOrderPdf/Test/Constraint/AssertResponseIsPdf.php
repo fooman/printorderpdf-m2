@@ -20,7 +20,7 @@ class AssertResponseIsPdf extends AbstractAssertPdf
         \Magento\Mtf\Config\DataInterface $config,
         \Magento\Mtf\Util\Protocol\CurlTransport $transport,
         $url = '',
-        $pdfMarkerExpected = '%PDF-1.4'
+        $pdfMarkerExpected = '%PDF-1.'
     ) {
         $curl = new BackendDecorator($transport, $config);
         $curl->addOption(CURLOPT_HEADER, 1);

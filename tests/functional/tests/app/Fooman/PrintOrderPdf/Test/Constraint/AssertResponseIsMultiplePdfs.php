@@ -21,7 +21,7 @@ class AssertResponseIsMultiplePdfs extends AbstractAssertPdf
         \Magento\Mtf\Config\DataInterface $config,
         \Magento\Mtf\Util\Protocol\CurlTransport $transport,
         array $orders,
-        $pdfMarkerExpected = '%PDF-1.4'
+        $pdfMarkerExpected = '%PDF-1.'
     ) {
         $url = $_ENV['app_backend_url'] . 'fooman_printorderpdf/order/pdforders/';
 
