@@ -11,13 +11,18 @@ namespace Fooman\PrintOrderPdf\Controller\Adminhtml\Order;
 
 /**
  * @magentoAppArea adminhtml
+ * @magentoDataFixture Magento/Sales/_files/order.php
  */
 class PrintActionTest extends \Magento\TestFramework\TestCase\AbstractBackendController
 {
     public function setUp()
     {
+        $order = \Magento\TestFramework\Helper\Bootstrap::getObjectManager()->create(
+            'Magento\Sales\Model\Order'
+        )->loadByIncrementId('100000001');
+
         $this->resource = 'Magento_Sales::sales_order';
-        $this->uri = 'backend/fooman_printorderpdf/order/print';
+        $this->uri = 'backend/fooman_printorderpdf/order/print/order_id/'.$order->getId();
         parent::setUp();
     }
 }
