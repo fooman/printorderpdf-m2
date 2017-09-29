@@ -15,6 +15,11 @@ use Magento\Framework\Controller\ResultFactory;
 class Pdforders extends \Magento\Backend\App\Action
 {
     /**
+     * @var string
+     */
+    protected $redirectUrl = '*/*/';
+
+    /**
      * @var \Magento\Sales\Model\ResourceModel\Order\CollectionFactory
      */
     protected $collectionFactory;
