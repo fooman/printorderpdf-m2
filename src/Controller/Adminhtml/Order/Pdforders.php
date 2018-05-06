@@ -10,10 +10,18 @@
 namespace Fooman\PrintOrderPdf\Controller\Adminhtml\Order;
 
 use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
+use Magento\Framework\Controller\ResultFactory;
 
-class Pdforders extends \Magento\Sales\Controller\Adminhtml\Order\AbstractMassAction
+class Pdforders extends \Magento\Backend\App\Action
 {
+    /**
+     * @var string
+     */
+    protected $redirectUrl = '*/*/';
+
+    /**
+     * @var \Magento\Sales\Model\ResourceModel\Order\CollectionFactory
+     */
     protected $collectionFactory;
 
     /**
@@ -21,6 +29,10 @@ class Pdforders extends \Magento\Sales\Controller\Adminhtml\Order\AbstractMassAc
      */
     protected $fileFactory;
 
+    /**
+     * @var \Fooman\PrintOrderPdf\Model\Pdf\OrderFactory
+     */
+    protected $orderPdfFactory;
 
     /**
      * @var \Magento\Framework\Stdlib\DateTime\DateTime
@@ -45,11 +57,12 @@ class Pdforders extends \Magento\Sales\Controller\Adminhtml\Order\AbstractMassAc
         \Fooman\PrintOrderPdf\Model\Pdf\OrderFactory $orderPdfFactory,
         \Magento\Framework\Stdlib\DateTime\DateTime $date
     ) {
+        $this->filter = $filter;
         $this->collectionFactory = $collectionFactory;
         $this->fileFactory = $fileFactory;
         $this->orderPdfFactory = $orderPdfFactory;
         $this->date = $date;
-        parent::__construct($context, $filter);
+        parent::__construct($context);
     }
 
     /**
@@ -63,20 +76,26 @@ class Pdforders extends \Magento\Sales\Controller\Adminhtml\Order\AbstractMassAc
     /**
      * Print selected orders
      *
-     * @param AbstractCollection $collection
-     *
      * @return \Magento\Backend\Model\View\Result\Redirect
      */
-    protected function massAction(AbstractCollection $collection)
+    public function execute()
     {
-        $pdf = $this->orderPdfFactory->create()->getPdf($collection);
-        $date = $this->date->date('Y-m-d_H-i-s');
+        try {
+            $collection = $this->filter->getCollection($this->collectionFactory->create());
+            $pdf = $this->orderPdfFactory->create()->getPdf($collection);
+            $date = $this->date->date('Y-m-d_H-i-s');
 
-        return $this->fileFactory->create(
-            'orders' . $date . '.pdf',
-            $pdf->render(),
-            DirectoryList::VAR_DIR,
-            'application/pdf'
-        );
+            return $this->fileFactory->create(
+                'orders' . $date . '.pdf',
+                $pdf->render(),
+                DirectoryList::VAR_DIR,
+                'application/pdf'
+            );
+        } catch (\Exception $e) {
+            $this->messageManager->addError($e->getMessage());
+            /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
+            $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
+            return $resultRedirect->setPath($this->redirectUrl);
+        }
     }
 }
