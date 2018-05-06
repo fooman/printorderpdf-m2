@@ -21,10 +21,10 @@ class PaymentInfoBlockTest extends \PHPUnit\Framework\TestCase
     {
         $this->objectManager = \Magento\TestFramework\Helper\Bootstrap::getObjectManager();
         $this->pdf = $this->objectManager->create(
-            '\Fooman\PrintOrderPdf\Model\Pdf\Order'
+            \Fooman\PrintOrderPdf\Model\Pdf\Order::class
         );
 
-        $this->helper = $this->objectManager->get('Magento\Payment\Helper\Data');
+        $this->helper = $this->objectManager->get(\Magento\Payment\Helper\Data::class);
     }
 
     /**
@@ -55,7 +55,7 @@ class PaymentInfoBlockTest extends \PHPUnit\Framework\TestCase
     protected function prepareOrder()
     {
         $order = \Magento\TestFramework\Helper\Bootstrap::getObjectManager()->create(
-            'Magento\Sales\Model\Order'
+            \Magento\Sales\Model\Order::class
         )->loadByIncrementId('100000001');
 
         return $order;

@@ -27,7 +27,7 @@ class PrintOrderButtonTest extends \Magento\TestFramework\TestCase\AbstractBacke
     public function testPrintOrderButton()
     {
         $orderId = \Magento\TestFramework\Helper\Bootstrap::getObjectManager()->create(
-            'Magento\Sales\Model\Order'
+            \Magento\Sales\Model\Order::class
         )->loadByIncrementId('100000001')->getId();
         $this->dispatch('backend/sales/order/view/order_id/' . $orderId);
         $this->assertContains('<button id="fooman_print" title="Print"', $this->getResponse()->getBody());
