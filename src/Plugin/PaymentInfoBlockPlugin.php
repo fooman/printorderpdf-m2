@@ -55,7 +55,7 @@ class PaymentInfoBlockPlugin
         if ($area) {
             $params['area'] = $area;
         }
-        return $this->resolver->getTemplateFileName($template ?: $this->getTemplate(), $params);
+        return $this->resolver->getTemplateFileName($template ?: $subject->getTemplate(), $params);
     }
 
 }
