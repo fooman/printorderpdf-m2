@@ -1,6 +1,6 @@
 # Change Log
 
-## [Unreleased]
+## [3.0.1] 2018-05-08
 ### Added
 - Ability to translate more terms (thanks @gediminaskv)
 ### Fixed
