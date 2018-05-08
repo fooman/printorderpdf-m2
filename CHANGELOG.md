@@ -1,6 +1,12 @@
 # Change Log
 
-## [Unreleased]
+## [Unreleased
+### Changed
+- Package changed into a Metapackage - Implementation moved into fooman/printorderpdf-implementation-m2 package
+- Semantic versioning will only be applied to the implementation package
+### Fixed
+- Change setTemplate workaround, use area emulation instead
+Constructor change in Plugin\PaymentInfoBlockPlugin, removes copied template files
 
 ## [2.2.2] 2017-09-11
 ### Changed
