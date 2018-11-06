@@ -1,6 +1,6 @@
 # Change Log
 
-## [Unreleased]
+## [3.0.2] 2018-11-06
 ### Fixed
 - Adjust integration test for 2.2.5
 
