@@ -1,5 +1,9 @@
 # Change Log
 
+## [Unreleased]
+### Added
+- Support for Magento 2.3
+
 ## [3.0.2] 2018-11-06
 ### Fixed
 - Adjust integration test for 2.2.5
