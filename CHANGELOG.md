@@ -1,6 +1,6 @@
 # Change Log
 
-## [3.1.0] 2018-11-27
+## [Unreleased]
 ### Added
 - Support for Magento 2.3
 
