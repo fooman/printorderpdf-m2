@@ -5,21 +5,21 @@
 - Support for Magento 2.3.1, 2.2.8 and 2.1.17
 - Initial MFTF acceptance test
 
-## [3.1.0] 2018-11-28
+## [3.1.0] - 2018-11-28
 ### Added
 - Support for Magento 2.3
 
-## [3.0.2] 2018-11-06
+## [3.0.2] - 2018-11-06
 ### Fixed
 - Adjust integration test for 2.2.5
 
-## [3.0.1] 2018-05-08
+## [3.0.1] - 2018-05-08
 ### Added
 - Ability to translate more terms (thanks @gediminaskv)
 ### Fixed
 - Minor code style issue
 
-## [3.0.0] 2018-05-08
+## [3.0.0] - 2018-05-08
 ### Changed
 - Package changed into a Metapackage - Implementation moved into fooman/printorderpdf-implementation-m2 package
 - Semantic versioning will only be applied to the implementation package
@@ -27,29 +27,29 @@
 - Change setTemplate workaround, use area emulation instead
 Constructor change in Plugin\PaymentInfoBlockPlugin, removes copied template files
 
-## [2.2.2] 2017-09-11
+## [2.2.2] - 2017-09-11
 ### Changed
 - Allow for different pdf versions in test
 
-## [2.2.1] 2017-08-30
+## [2.2.1] - 2017-08-30
 ### Changed
 - Added preprocessing of tests to run across 2.1/2.2
 
-## [2.2.0] 2017-08-25
+## [2.2.0] - 2017-08-25
 ### Fixed
 - Empty payment details by providing frontend pdf template for known template files
 ### Added
 - Added support for PHP 7.1
 
-## [2.1.0] 2017-03-01
+## [2.1.0] - 2017-03-01
 ### Added
 - Support for bundled products
 
-## [2.0.3] 2016-06-29
+## [2.0.3] - 2016-06-29
 ### Changed
 - Compatibility with Magento 2.1, for Magento 2.0 use earlier versions
 
-## [2.0.2] 2016-03-30
+## [2.0.2] - 2016-03-30
 ### Changed
 - Test improvements
 
