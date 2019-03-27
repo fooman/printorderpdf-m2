@@ -1,6 +1,9 @@
 # Change Log
 
 ## [Unreleased]
+### Added
+- Support for Magento 2.3.1, 2.2.8 and 2.1.17
+- Initial MFTF acceptance test
 
 ## [3.1.0] 2018-11-28
 ### Added
