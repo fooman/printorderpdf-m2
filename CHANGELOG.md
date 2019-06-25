@@ -1,6 +1,8 @@
 # Change Log
 
 ## [Unreleased]
+### Added
+- Support for Magento 2.3.2, 2.2.9 and 2.1.18
 
 ## [3.1.2] - 2019-05-02
 ### Changed
