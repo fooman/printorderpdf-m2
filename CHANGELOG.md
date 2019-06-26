@@ -1,6 +1,6 @@
 # Change Log
 
-## [Unreleased]
+## [3.1.4] - 2019-06-26
 ### Changed
 - Re-release of 3.1.3
 
