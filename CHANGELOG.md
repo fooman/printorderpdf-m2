@@ -1,6 +1,6 @@
 # Change Log
 
-## [Unreleased]
+## [3.2.0] - 2020-07-28
 ### Added
 - Compatibility with Magento 2.4.0
 - Support for Php 7.4
