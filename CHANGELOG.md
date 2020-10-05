@@ -2,7 +2,9 @@
 
 ## [Unreleased]
 ### Added
-- Compatibility with Magento 2.3.6
+- Compatibility with Magento 2.4.1 and 2.3.6
+### Changed
+- Don't keep temporary files in var folder
 
 ## [3.2.0] - 2020-07-28
 ### Added
