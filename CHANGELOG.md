@@ -1,6 +1,8 @@
 # Change Log
 
 ## [Unreleased]
+### Added
+- Compatibility with Magento 2.4.2
 
 ## [3.3.0] - 2020-10-07
 ### Added
