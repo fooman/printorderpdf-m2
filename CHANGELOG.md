@@ -1,6 +1,6 @@
 # Change Log
 
-## [Unreleased]
+## [3.3.2] - 2021-04-30
 ### Added
 - Compatibility with Magento 2.3.7
 
