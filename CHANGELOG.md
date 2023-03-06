@@ -1,6 +1,9 @@
 # Change Log
 
 ## [Unreleased]
+### Added
+- Compatibility with Magento 2.4.6
+- Support for Php 8.2
 
 ## [3.3.5] - 2022-08-03
 ### Added
