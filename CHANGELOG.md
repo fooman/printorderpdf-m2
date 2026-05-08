@@ -1,5 +1,7 @@
 # Change Log
 
+## [Unreleased]
+
 ## [3.6.1] - 2026-05-08
 ### Added
 - Support for Php 8.5
